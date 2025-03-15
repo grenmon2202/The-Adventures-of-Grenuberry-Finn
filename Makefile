@@ -28,4 +28,8 @@ Player.o: src/Player.cpp
 	$(CXX) $(CXXFLAGS) -c src/Player.cpp -o Player.o
 
 clean:
+ifeq ($(OS),Windows_NT)
+	del /Q *.o TheAdventuresOfGrenuberryFinn.exe
+else
 	rm -f *.o TheAdventuresOfGrenuberryFinn
+endif
