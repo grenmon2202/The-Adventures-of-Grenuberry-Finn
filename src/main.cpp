@@ -1,14 +1,13 @@
+#include "GameController.h"
 #include "Map.h"
-#include <iostream>
+#include "Player.h"
+#include "GameUtils.h"
 
 int main() {
-    Map gameMap(20);
-    char command;
+    GameController game(20, "Grenmon");
 
     while (true) {
-        gameMap.render();
-        std::cin >> command;
-        gameMap.movePlayer(command);
+        game.flow();
     }
 
     return 0;

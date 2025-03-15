@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <cmath>
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
 #else
@@ -38,4 +39,26 @@ int GameUtils :: getTerminalWidth() {
     #endif
 
     return columns;
+}
+
+GameUtils::Position2D::Position2D(int x, int y) : x(x), y(y) {}
+
+bool GameUtils::Position2D::operator==(const Position2D& other) const {
+    return x == other.x && y == other.y;
+}
+
+double GameUtils::Position2D::distance(const Position2D& other) const {
+    return sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y));
+}
+
+void GameUtils::clearScreen() {
+    // ----- CLEAR SCREEN BLOCK -----
+    // clearing screen using relevant command for OS
+    #ifdef _WIN32
+    system("cls");
+
+    #else
+    system("clear");
+
+    #endif
 }
