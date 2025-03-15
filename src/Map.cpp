@@ -1,6 +1,7 @@
 #include "Map.h"
 #include "GameUtils.h"
 #include <iostream>
+#include <cstring>
 
 Map::Map(int size) {
 
@@ -9,7 +10,7 @@ Map::Map(int size) {
 
     for (int i = 0; i < MAP_SIZE; i++){
         MAP_GRID[i] = new char[size];
-        std::memset(MAP_GRID[i], '.', size);
+        memset(MAP_GRID[i], '.', size);
     }
 
     PLAYER_X = 0;
@@ -38,7 +39,7 @@ void Map::render() const {
     // ----- RENDER FRESH MAP -----
     for (int i = 0; i<MAP_SIZE; i++){
         for (int j = 0; j<MAP_SIZE; j++){
-            if (i == PLAYER_Y and j == PLAYER_X){
+            if (i == PLAYER_Y && j == PLAYER_X){
                 std::cout << "P" << " ";
             }
             else {
